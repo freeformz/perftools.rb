@@ -12,19 +12,23 @@ require 'mkmf'
 require 'fileutils'
 
 if RUBY_VERSION >= "1.9"
-  begin
-    require "ruby_core_source"
-  rescue LoadError
-    require 'rubygems/user_interaction' # for 1.9.1
-    require 'rubygems/dependency_installer'
-    installer = Gem::DependencyInstaller.new
-    installer.install 'ruby_core_source'
+  # begin
+    puts "require ruby_core_source"
+    require "./ruby_core_source/ruby_core_source.rb"
+    puts "/require_ruby_core_source"
+  # rescue LoadError
+  #   require 'rubygems/user_interaction' # for 1.9.1
+  #   require 'rubygems/dependency_installer'
+  #   installer = Gem::DependencyInstaller.new
+  #   puts "installing ruby_core_source"
+  #   installer.install 'ruby_core_source'
+  #   puts "/installing ruby_core_source"
 
-    Gem.refresh
-    Gem.activate('ruby_core_source') # for 1.9.1
+  #   Gem.refresh
+  #   Gem.activate('ruby_core_source') # for 1.9.1
 
-    require "ruby_core_source"
-  end
+  #   require "ruby_core_source"
+  # end
 end
 
 perftools = File.basename('google-perftools-1.6.tar.gz')
